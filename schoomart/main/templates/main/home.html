@@ -1,0 +1,78 @@
+{% extends 'main/base.html' %} {% block title %}Home | SchoolMart{% endblock %}
+{% block link %}
+        
+        <a href="/login/" class="block" title="Coming soon">Logout </a>
+{% endblock %}
+{%block content %}
+<!-- Search Bar -->
+<div class="flex justify-center mb-10">
+  <form method="GET" action="{% url 'home' %}" class="w-full max-w-3xl">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search products..."
+      class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+    />
+  </form>
+</div>
+<section class="relative w-full overflow-hidden">
+  <img
+    src="https://via.placeholder.com/1200x400?text=Sponsored+Ad"
+    alt="Sponsored Ad"
+    class="w-full h-[300px] object-cover"
+  />
+
+  <!-- Highlight text overlay -->
+  <div
+    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+  >
+    <h2 class="text-white text-3xl font-bold tracking-wide">
+      Sponsored Product Highlight
+    </h2>
+  </div>
+</section>
+
+<!-- All Products Section -->
+<section class="mb-16">
+  <h2 class="text-2xl font-semibold mb-6">All Products</h2>
+  <div class="flex flex-wrap gap-6 justify-start">
+    {% for i in "123456"|make_list %}
+    <div class="w-[280px]">
+      <div class="bg-white rounded-lg shadow overflow-hidden w-full h-[200px]">
+        <img
+          src="https://via.placeholder.com/280x200"
+          alt="Product {{ i }}"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <h3 class="mt-2 text-md font-medium text-center truncate">
+        Product {{ i }}
+      </h3>
+    </div>
+
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Featured Products Section -->
+<section>
+  <h2 class="text-2xl font-semibold mb-6">Sponsored Products</h2>
+  <div class="flex flex-wrap gap-6 justify-start">
+    {% for i in "1234"|make_list %}
+    <div class="w-[280px]">
+      <div class="bg-white rounded-lg shadow overflow-hidden w-full h-[200px]">
+        <img
+          src="https://via.placeholder.com/280x200"
+          alt="Sponsored {{ i }}"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <h3 class="mt-2 text-md font-medium text-center truncate">
+        Sponsored Product {{ i }}
+      </h3>
+    </div>
+
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

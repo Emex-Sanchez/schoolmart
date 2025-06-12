@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %} {% block title %}SchoolMart_Post_product
+{%endblock %} 
+{% block link %}
+<a href="/login/" class="block" title="Coming soon">Logout </a>
+{% endblock %}
+{%block content %}
+<div class="max-w-2xl mx-auto bg-white p-8 shadow-lg rounded-2xl mt-10">
+  <h2 class="text-3xl font-bold mb-6 text-center" style="color: #14701f">
+    New Advert
+  </h2>
+  <form method="POST" enctype="multipart/form-data" class="space-y-6">
+    {% csrf_token %}
+
+    <!-- Category -->
+    <div>
+      <label for="category" class="block text-gray-700 font-medium mb-2"
+        >Category</label
+      >
+      <select
+        name="category"
+        id="category"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+      >
+        {% for category in categories %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Image -->
+    <div>
+      <label for="image" class="block text-gray-700 font-medium mb-2"
+        >Product Image</label
+      >
+      <input
+        type="file"
+        name="image"
+        id="image"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+      />
+    </div>
+
+    <!-- Project Title -->
+    <div>
+      <label for="title" class="block text-gray-700 font-medium mb-2"
+        >Product Title</label
+      >
+      <input
+        type="text"
+        name="title"
+        id="title"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+        required
+      />
+    </div>
+
+    <!-- Product Description -->
+    <div>
+      <label for="description" class="block text-gray-700 font-medium mb-2"
+        >Product Description</label
+      >
+      <textarea
+        name="description"
+        id="description"
+        rows="4"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Price -->
+    <div>
+      <label for="price" class="block text-gray-700 font-medium mb-2"
+        >Price (₦)</label
+      >
+      <input
+        type="number"
+        name="price"
+        id="price"
+        step="0.01"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+        required
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="w-full bg-[#14701F] text-white font-semibold py-3 rounded-lg hover:opacity-90 transition duration-200"
+    >
+      Post Product
+    </button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %} {% block title %}SchoolMart_shop{% endblock %}
+{% block link %}
+<a href="/login/" class="block" title="Coming soon">Logout </a>
+{% endblock %}
+{%block content %}
+
+<!-- Category Navigation -->
+<nav class="flex flex-wrap justify-center gap-3 mb-6">
+  <button class="px-4 py-2 text-sm border rounded-full hover:bg-gray-100">
+    Books
+  </button>
+  <button class="px-4 py-2 text-sm border rounded-full hover:bg-gray-100">
+    Uniforms
+  </button>
+  <button class="px-4 py-2 text-sm border rounded-full hover:bg-gray-100">
+    Electronics
+  </button>
+  <button class="px-4 py-2 text-sm border rounded-full hover:bg-gray-100">
+    Accessories
+  </button>
+  <button class="px-4 py-2 text-sm border rounded-full hover:bg-gray-100">
+    Others
+  </button>
+</nav>
+
+<h2 class="text-3xl font-bold mb-6 text-center" style="color: #14701f">
+  Products
+</h2>
+
+<!-- Product Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 px-4 mb-10">
+  {% for i in "1"|center:50 %}
+  <div class="bg-white rounded-lg shadow overflow-hidden" style="height: 280px">
+    <img
+      src="https://via.placeholder.com/200x150?text=Product+{{ forloop.counter }}"
+      alt="Product {{ forloop.counter }}"
+      class="w-full h-32 object-cover"
+      style="height: 200px"
+    />
+    <div class="text-center p-2">
+      <h3 class="text-sm font-medium truncate">
+        Product {{ forloop.counter }}
+      </h3>
+      <p>NGN 1000,00</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Pagination (Non-functional) -->
+<div class="flex justify-center items-center space-x-3 mb-10">
+  <button class="px-4 py-1 border rounded hover:bg-gray-100 text-sm">
+    Previous
+  </button>
+  <span class="text-gray-600 text-sm">Page 1 of 5</span>
+  <button class="px-4 py-1 border rounded hover:bg-gray-100 text-sm">
+    Next
+  </button>
+</div>
+
+{% endblock %}
